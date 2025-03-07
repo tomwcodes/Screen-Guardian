@@ -8,6 +8,9 @@
 - [x] Refactor website to be a screen protector price comparison site
 - [x] Modify filter options to only include Make and Model of devices
 - [x] Remove hardness and thickness categories and add affiliate link
+- [x] Remove price history section
+- [x] Center the text in the footer
+- [x] Make the footer stick to the bottom of the screen
 
 ## Future Tasks
 - [ ] Add actual screen protector product data

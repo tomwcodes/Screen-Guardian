@@ -10,8 +10,7 @@ The project currently consists of:
    - Header with navigation (Smartphones, Tablets, Watches, About)
    - Filter section with dropdowns (Make, Model) and checkboxes
    - Results table (empty) with columns for screen protector attributes (Product, Device, Price, Material, Rating, Affiliate Link)
-   - Price history section (placeholder)
-   - Footer with links and information
+   - Footer with centered copyright information
 
 2. **CSS Styling (styles/main.css)**
    - Responsive design
@@ -19,6 +18,7 @@ The project currently consists of:
    - Table layout for displaying products
    - Filter controls styling
    - Mobile-friendly design with media queries
+   - Sticky footer that remains at the bottom of the viewport
 
 3. **JavaScript Functionality (scripts/main.js)**
    - Filter event listeners for Make, Model, In Stock, and Sort By
