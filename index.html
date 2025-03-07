@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScreenGuardian - Screen Protector Price Comparison</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <h1>ScreenGuardian</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Smartphones</a></li>
+                    <li><a href="#">Tablets</a></li>
+                    <li><a href="#">Watches</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <section class="filters-section">
+                <div class="filter-group">
+                    <h3>Filter Options</h3>
+                    <div class="filter-controls">
+                        <div class="filter-item">
+                            <label for="make">Make</label>
+                            <select id="make" class="filter-select">
+                                <option value="all">All Makes</option>
+                                <option value="apple">Apple</option>
+                                <option value="samsung">Samsung</option>
+                                <option value="google">Google</option>
+                                <option value="oneplus">OnePlus</option>
+                                <option value="xiaomi">Xiaomi</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label for="model">Model</label>
+                            <select id="model" class="filter-select">
+                                <option value="all">All Models</option>
+                                <option value="iphone-15-pro">iPhone 15 Pro</option>
+                                <option value="iphone-15">iPhone 15</option>
+                                <option value="iphone-14-pro">iPhone 14 Pro</option>
+                                <option value="iphone-14">iPhone 14</option>
+                                <option value="iphone-13">iPhone 13</option>
+                                <option value="galaxy-s24">Galaxy S24</option>
+                                <option value="galaxy-s23">Galaxy S23</option>
+                                <option value="galaxy-s22">Galaxy S22</option>
+                                <option value="pixel-8-pro">Pixel 8 Pro</option>
+                                <option value="pixel-8">Pixel 8</option>
+                                <option value="pixel-7">Pixel 7</option>
+                            </select>
+                        </div>
+                        <div class="filter-item checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="in-stock">
+                                <span>In Stock Only</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sort-group">
+                    <label for="sort-by">Sort By:</label>
+                    <select id="sort-by" class="sort-select">
+                        <option value="price-asc">Price (Low to High)</option>
+                        <option value="price-desc">Price (High to Low)</option>
+                        <option value="rating-desc">Rating (High to Low)</option>
+                        <option value="date-desc">Newest First</option>
+                        <option value="popularity">Popularity</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="results-section">
+                <div class="results-header">
+                    <h2>Smartphone Screen Protectors</h2>
+                    <div class="results-count">
+                        <span class="count">0</span> products found
+                    </div>
+                </div>
+                <div class="results-table-container">
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th class="col-product">Product</th>
+                                <th class="col-device">Device</th>
+                                <th class="col-price">Price</th>
+                                <th class="col-material">Material</th>
+                                <th class="col-rating">Rating</th>
+                                <th class="col-affiliate">Affiliate Link</th>
+                                <th class="col-actions"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Product rows would go here, but we're not populating with data -->
+                            <tr class="placeholder-row">
+                                <td colspan="8" class="placeholder-message">
+                                    Use the filters above to find products
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="price-history-section">
+                <h3>Price History</h3>
+                <div class="chart-container">
+                    <!-- Chart would go here, but we're just creating the framework -->
+                    <div class="chart-placeholder">
+                        Price history chart would appear here
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About ScreenGuardian</h4>
+                    <p>A tool to help you find the best prices on screen protectors for your devices.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Tablets</a></li>
+                        <li><a href="#">Watches</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ScreenGuardian. This is a demo site.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
