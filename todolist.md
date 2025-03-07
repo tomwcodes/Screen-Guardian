@@ -13,7 +13,12 @@
 - [x] Make the footer stick to the bottom of the screen
 
 ## Future Tasks
-- [ ] Add actual screen protector product data
+- [x] Add actual screen protector product data
+- [x] Remove stars from rating display, only show the number
+- [x] Remove "Buy Now" button and replace with hyperlink text
+- [x] Center align data in screen protector section
+- [x] Fix rating alignment in the table
+- [x] Remove link icon after "Visit Website" text
 - [ ] Implement real filtering functionality
 - [ ] Add price history charts with a charting library
 - [ ] Implement product comparison feature
