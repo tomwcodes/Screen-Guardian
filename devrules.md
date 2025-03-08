@@ -2,6 +2,8 @@
 
 You should do task-based development. For every task, you should write the tests, implement the code, and run the tests to make sure everything works. Use `dotnet test` to run the tests or use `dotnet test --filter "FullyQualifiedName~TypeConversionTests"` to run a specific test.
 
+Please think step by step about whether there exists a less over-engineered and yet simpler, more elegant, and more robust solution to the problem that accords with KISS and DRY principles.
+
 When the tests pass:
 * Update the todo list to reflect the task being completed
 * Update the memory file to reflect the current state of the project

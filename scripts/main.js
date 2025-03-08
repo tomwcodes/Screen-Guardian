@@ -1,5 +1,36 @@
 // Main JavaScript file for ScreenGuardian - Screen Protector Price Comparison
 
+// Add meta description dynamically based on selected filters
+function updateMetaDescription(make, model) {
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) return;
+    
+    if (make !== 'all' && model !== 'all') {
+        const makeText = document.querySelector(`#make option[value="${make}"]`).textContent;
+        const modelText = document.querySelector(`#model option[value="${model}"]`).textContent;
+        metaDescription.content = `Compare ${makeText} ${modelText} screen protector prices. Find the best deals on tempered glass, privacy glass, and TPU film screen protectors.`;
+    } else if (make !== 'all') {
+        const makeText = document.querySelector(`#make option[value="${make}"]`).textContent;
+        metaDescription.content = `Compare ${makeText} screen protector prices for all models. Find the best deals on tempered glass, privacy glass, and TPU film screen protectors.`;
+    } else {
+        metaDescription.content = "Compare screen protector prices for iPhone, Samsung, Google Pixel and more. Find the best deals on tempered glass, privacy glass, and TPU film screen protectors.";
+    }
+}
+
+// Update page title based on selected filters
+function updatePageTitle(make, model) {
+    if (make !== 'all' && model !== 'all') {
+        const makeText = document.querySelector(`#make option[value="${make}"]`).textContent;
+        const modelText = document.querySelector(`#model option[value="${model}"]`).textContent;
+        document.title = `${makeText} ${modelText} Screen Protectors | ScreenGuardian`;
+    } else if (make !== 'all') {
+        const makeText = document.querySelector(`#make option[value="${make}"]`).textContent;
+        document.title = `${makeText} Screen Protectors | ScreenGuardian`;
+    } else {
+        document.title = "ScreenGuardian - Compare Screen Protector Prices | Find the Best Deals";
+    }
+}
+
 // Dummy data for iPhone 15 Pro screen protectors
 const screenProtectorData = [
     {
@@ -108,7 +139,67 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Display all products initially
     displayProducts(screenProtectorData);
+    
+    // Add event listeners for smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Generate product schema for SEO
+    generateProductSchema();
 });
+
+// Generate JSON-LD schema for products
+function generateProductSchema() {
+    const schema = {
+        "@context": "https://schema.org/",
+        "@type": "ItemList",
+        "itemListElement": []
+    };
+    
+    screenProtectorData.forEach((product, index) => {
+        schema.itemListElement.push({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@type": "Product",
+                "name": `${product.brand} Screen Protector for ${product.device}`,
+                "description": `${product.material} screen protector for ${product.device}`,
+                "brand": {
+                    "@type": "Brand",
+                    "name": product.brand
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": product.price,
+                    "priceCurrency": "USD",
+                    "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": product.rating,
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "100" // Placeholder value
+                }
+            }
+        });
+    });
+    
+    // Add the schema to the page
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.text = JSON.stringify(schema);
+    document.head.appendChild(scriptTag);
+}
 
 function initializeFilters() {
     // Get all filter elements
@@ -125,6 +216,17 @@ function initializeFilters() {
     
     // Add event listener to update model options based on selected make
     if (makeFilter) makeFilter.addEventListener('change', updateModelOptions);
+    
+    // Add event listener to update meta description and title
+    if (makeFilter) makeFilter.addEventListener('change', function() {
+        updateMetaDescription(makeFilter.value, modelFilter.value);
+        updatePageTitle(makeFilter.value, modelFilter.value);
+    });
+    
+    if (modelFilter) modelFilter.addEventListener('change', function() {
+        updateMetaDescription(makeFilter.value, modelFilter.value);
+        updatePageTitle(makeFilter.value, modelFilter.value);
+    });
 }
 
 function updateModelOptions() {
@@ -197,6 +299,14 @@ function applyFilters() {
     const inStockOnly = inStockFilter.checked;
     const sortBy = sortBySelect.value;
     
+    // Update URL with filter parameters for better SEO and sharing
+    const url = new URL(window.location);
+    url.searchParams.set('make', selectedMake);
+    url.searchParams.set('model', selectedModel);
+    url.searchParams.set('inStock', inStockOnly ? 'true' : 'false');
+    url.searchParams.set('sort', sortBy);
+    window.history.replaceState({}, '', url);
+    
     // Filter products
     let filteredProducts = screenProtectorData.filter(product => {
         // Filter by make
@@ -238,6 +348,10 @@ function applyFilters() {
     if (countElement) {
         countElement.textContent = filteredProducts.length;
     }
+    
+    // Update page title and meta description based on filters
+    updateMetaDescription(selectedMake, selectedModel);
+    updatePageTitle(selectedMake, selectedModel);
 }
 
 // This function displays product data in the table
@@ -268,16 +382,38 @@ function displayProducts(products) {
                 row.classList.add('out-of-stock');
             }
             
+            // Add structured data attributes for better SEO
+            row.setAttribute('itemscope', '');
+            row.setAttribute('itemtype', 'https://schema.org/Product');
+            
             row.innerHTML = `
-                <td class="col-brand">${product.brand}</td>
-                <td class="col-price">$${product.price.toFixed(2)}</td>
+                <td class="col-brand">
+                    <span itemprop="brand" itemscope itemtype="https://schema.org/Brand">
+                        <meta itemprop="name" content="${product.brand}">
+                        ${product.brand}
+                    </span>
+                </td>
+                <td class="col-price">
+                    <span itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="USD">
+                        <meta itemprop="price" content="${product.price}">
+                        <meta itemprop="availability" content="${product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'}">
+                        $${product.price.toFixed(2)}
+                    </span>
+                </td>
                 <td class="col-quantity">${product.quantity}</td>
                 <td class="col-material">${product.material}</td>
                 <td class="col-rating">
-                    ${product.rating.toFixed(1)}
+                    <span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                        <meta itemprop="ratingValue" content="${product.rating}">
+                        <meta itemprop="bestRating" content="5">
+                        <meta itemprop="worstRating" content="1">
+                        <meta itemprop="ratingCount" content="100">
+                        ${product.rating.toFixed(1)}
+                    </span>
                 </td>
                 <td class="col-link">
-                    <a href="${product.link}" target="_blank">
+                    <a href="${product.link}" target="_blank" rel="noopener" itemprop="url">
                         Visit Website
                     </a>
                 </td>

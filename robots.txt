@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://screenguardian.com/sitemap.xml
