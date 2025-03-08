@@ -205,14 +205,18 @@ function initializeFilters() {
     // Get all filter elements
     const makeFilter = document.getElementById('make');
     const modelFilter = document.getElementById('model');
-    const inStockFilter = document.getElementById('in-stock');
     const sortBySelect = document.getElementById('sort-by');
+    const dataSourceCom = document.getElementById('data-source-com');
+    const dataSourceUk = document.getElementById('data-source-uk');
     
     // Add event listeners to filters
     if (makeFilter) makeFilter.addEventListener('change', applyFilters);
     if (modelFilter) modelFilter.addEventListener('change', applyFilters);
-    if (inStockFilter) inStockFilter.addEventListener('change', applyFilters);
     if (sortBySelect) sortBySelect.addEventListener('change', applyFilters);
+    
+    // Data source radio buttons
+    if (dataSourceCom) dataSourceCom.addEventListener('change', applyFilters);
+    if (dataSourceUk) dataSourceUk.addEventListener('change', applyFilters);
     
     // Add event listener to update model options based on selected make
     if (makeFilter) makeFilter.addEventListener('change', updateModelOptions);
@@ -279,6 +283,7 @@ function updateModelOptions() {
     }
 }
 
+// Helper function to add model options
 function addModelOption(selectElement, value, text) {
     const option = document.createElement('option');
     option.value = value;
@@ -289,22 +294,30 @@ function addModelOption(selectElement, value, text) {
 function applyFilters() {
     const makeFilter = document.getElementById('make');
     const modelFilter = document.getElementById('model');
-    const inStockFilter = document.getElementById('in-stock');
     const sortBySelect = document.getElementById('sort-by');
     
-    if (!makeFilter || !modelFilter || !inStockFilter || !sortBySelect) return;
+    // Get all data source radio buttons
+    const dataSourceRadios = document.querySelectorAll('input[name="data-source"]');
+    let dataSource = 'amazon.com'; // Default
+    for (const radio of dataSourceRadios) {
+        if (radio.checked) {
+            dataSource = radio.value;
+            break;
+        }
+    }
+    
+    if (!makeFilter || !modelFilter || !sortBySelect) return;
     
     const selectedMake = makeFilter.value;
     const selectedModel = modelFilter.value;
-    const inStockOnly = inStockFilter.checked;
     const sortBy = sortBySelect.value;
     
     // Update URL with filter parameters for better SEO and sharing
     const url = new URL(window.location);
     url.searchParams.set('make', selectedMake);
     url.searchParams.set('model', selectedModel);
-    url.searchParams.set('inStock', inStockOnly ? 'true' : 'false');
     url.searchParams.set('sort', sortBy);
+    url.searchParams.set('dataSource', dataSource);
     window.history.replaceState({}, '', url);
     
     // Filter products
@@ -314,9 +327,6 @@ function applyFilters() {
         
         // Filter by model
         if (selectedModel !== 'all' && product.deviceValue !== selectedModel) return false;
-        
-        // Filter by stock
-        if (inStockOnly && !product.inStock) return false;
         
         return true;
     });
@@ -454,4 +464,21 @@ function generateStarRating(rating) {
 function loadPriceHistory(productId) {
     // In a real implementation, this would fetch price history data and render a chart
     console.log('Loading price history for product:', productId);
+}
+
+// Update the data source text in the footer
+function updateDataSourceText(dataSource) {
+    const footerText = document.querySelector('.footer-section p');
+    if (!footerText) return;
+    
+    let text = footerText.innerHTML;
+    
+    // Replace Amazon reference with the selected data source
+    if (dataSource === 'amazon.com') {
+        text = text.replace(/Amazon\.co\.uk/g, 'Amazon.com');
+    } else {
+        text = text.replace(/Amazon\.com/g, 'Amazon.co.uk');
+    }
+    
+    footerText.innerHTML = text;
 }

@@ -38,60 +38,86 @@
 
     <main class="site-main">
         <div class="container">
-            
-            <section class="filters-section" aria-label="Filter Options">
-                <div class="filter-group">
-                    <h3>Select Your Device</h3>
-                    <div class="filter-controls">
-                        <div class="filter-item">
-                            <label for="make">Brand</label>
-                            <select id="make" class="filter-select">
-                                <option value="all">All Brands</option>
-                                <option value="apple">Apple</option>
-                                <option value="samsung">Samsung</option>
-                                <option value="google">Google</option>
-                                <option value="oneplus">OnePlus</option>
-                                <option value="xiaomi">Xiaomi</option>
-                            </select>
-                        </div>
-                        <div class="filter-item">
-                            <label for="model">Model</label>
-                            <select id="model" class="filter-select">
-                                <option value="all">All Models</option>
-                                <option value="iphone-15-pro">iPhone 15 Pro</option>
-                                <option value="iphone-15">iPhone 15</option>
-                                <option value="iphone-14-pro">iPhone 14 Pro</option>
-                                <option value="iphone-14">iPhone 14</option>
-                                <option value="iphone-13">iPhone 13</option>
-                                <option value="galaxy-s24">Galaxy S24</option>
-                                <option value="galaxy-s23">Galaxy S23</option>
-                                <option value="galaxy-s22">Galaxy S22</option>
-                                <option value="pixel-8-pro">Pixel 8 Pro</option>
-                                <option value="pixel-8">Pixel 8</option>
-                                <option value="pixel-7">Pixel 7</option>
-                            </select>
-                        </div>
-                        <div class="filter-item checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="in-stock">
-                                <span>In Stock Only</span>
-                            </label>
+            <!-- Filters row with two columns -->
+            <div class="filters-row">
+                <!-- Left column - Device filter box -->
+                <div class="filters-column">
+                    <!-- Device filter box -->
+                    <div class="filter-box">
+                        <div class="filter-box-header">Select Your Device</div>
+                        <div class="filter-box-content">
+                            <div class="filter-item">
+                                <label for="make">Brand</label>
+                                <select id="make" class="filter-select">
+                                    <option value="all">All Brands</option>
+                                    <option value="apple">Apple</option>
+                                    <option value="samsung">Samsung</option>
+                                    <option value="google">Google</option>
+                                    <option value="oneplus">OnePlus</option>
+                                    <option value="xiaomi">Xiaomi</option>
+                                </select>
+                            </div>
+                            <div class="filter-item">
+                                <label for="model">Model</label>
+                                <select id="model" class="filter-select">
+                                    <option value="all">All Models</option>
+                                    <option value="iphone-15-pro">iPhone 15 Pro</option>
+                                    <option value="iphone-15">iPhone 15</option>
+                                    <option value="iphone-14-pro">iPhone 14 Pro</option>
+                                    <option value="iphone-14">iPhone 14</option>
+                                    <option value="iphone-13">iPhone 13</option>
+                                    <option value="galaxy-s24">Galaxy S24</option>
+                                    <option value="galaxy-s23">Galaxy S23</option>
+                                    <option value="galaxy-s22">Galaxy S22</option>
+                                    <option value="pixel-8-pro">Pixel 8 Pro</option>
+                                    <option value="pixel-8">Pixel 8</option>
+                                    <option value="pixel-7">Pixel 7</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="sort-group">
-                    <label for="sort-by">Sort By:</label>
-                    <select id="sort-by" class="sort-select">
-                        <option value="price-asc">Price (Low to High)</option>
-                        <option value="price-desc">Price (High to Low)</option>
-                        <option value="rating-desc">Rating (High to Low)</option>
-                        <option value="date-desc">Newest First</option>
-                        <option value="popularity">Popularity</option>
-                    </select>
+                
+                <!-- Right column - Data source filter box -->
+                <div class="filters-column">
+                    <!-- Data source filter box -->
+                    <div class="filter-box data-source-box">
+                        <div class="filter-box-header">Data source</div>
+                        <div class="filter-box-content">
+                            <div class="data-source-options">
+                                <label class="checkbox-label">
+                                    <input type="radio" name="data-source" id="data-source-com" value="amazon.com" checked>
+                                    amazon.com
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="radio" name="data-source" id="data-source-uk" value="amazon.co.uk">
+                                    amazon.co.uk
+                                </label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
-
-            <section class="results-section" id="results">
+            </div>
+            
+            <!-- Sort filter box below the two columns -->
+            <div class="sort-container">
+                <div class="filter-box">
+                    <div class="filter-box-header">Sort By</div>
+                    <div class="filter-box-content">
+                        <select id="sort-by" class="filter-select">
+                            <option value="price-asc">Price (Low to High)</option>
+                            <option value="price-desc">Price (High to Low)</option>
+                            <option value="rating-desc">Rating (High to Low)</option>
+                            <option value="date-desc">Newest First</option>
+                            <option value="popularity">Popularity</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results container -->
+            <div class="results-container">
+                
                 <div class="results-header">
                     <h2>Screen Protectors</h2>
                     <div class="results-count">
@@ -102,33 +128,38 @@
                     <table class="results-table">
                         <thead>
                             <tr>
-                                <th class="col-brand">Brand</th>
-                                <th class="col-price">Price</th>
-                                <th class="col-quantity">Quantity</th>
-                                <th class="col-material">Material</th>
-                                <th class="col-rating">Rating</th>
-                                <th class="col-link">Affiliate Link</th>
+                                <th>Brand</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Material</th>
+                                <th>Rating</th>
+                                <th>Link</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Product rows would go here, but we're not populating with data -->
                             <tr class="placeholder-row">
-                                <td colspan="8" class="placeholder-message">
-                                    Use the filters above to find products
+                                <td colspan="6" class="placeholder-message">
+                                    Use the filters to find products
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </section>
-
+            </div>
         </div>
     </main>
     
     <footer class="site-footer">
         <div class="container">
             <div class="footer-section">
-                <p>As an Amazon Associate I earn from qualifying purchases. Product prices and availability are accurate as of the date/time indicated and are subject to change. Any price and availability information displayed at the time of purchase will apply to the purchase of the product. <br>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON SERVICES LLC. THIS CONTENT IS PROVIDED 'AS IS' AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.<br>2025 ScreenGuardian. All rights reserved.</p>
+                <p>As an Amazon Associate I earn from qualifying purchases. Product prices and availability are accurate as of the date/time indicated and are subject to change.</p>
+                <p>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON SERVICES LLC. THIS CONTENT IS PROVIDED 'AS IS' AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</p>
+                <p>© 2025 ScreenGuardian. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">This site is supported by paid affiliate links.</a>
             </div>
         </div>
     </footer>

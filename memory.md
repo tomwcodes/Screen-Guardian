@@ -12,6 +12,7 @@ The project currently consists of:
    - Header with navigation (About, Contact)
    - Hero section with clear value proposition
    - Filter section with dropdowns (Make, Model) and checkboxes
+   - Data source selection box positioned opposite the device box in a two-column layout
    - Results table with columns for screen protector attributes (Brand, Price, Quantity, Material, Rating, Link)
    - About and Contact sections
    - Enhanced footer with quick links and popular devices
@@ -26,6 +27,7 @@ The project currently consists of:
    - Clear typographic hierarchy with consistent font weights and sizes
    - Minimalist footer design with centered content
    - Table layout for displaying products with center-aligned data
+   - Narrower columns for quantity and rating for better visual balance
    - Filter controls styling with improved spacing
    - Mobile-friendly design with media queries
    - Sticky footer that remains at the bottom of the viewport
@@ -35,7 +37,7 @@ The project currently consists of:
 
 3. **JavaScript Functionality (scripts/main.js)**
    - Dummy data for iPhone 15 Pro screen protectors (7 products with various attributes)
-   - Functional filtering system based on Make, Model, and In Stock status
+   - Simplified filtering system based on Make, Model, and Data Source (limited to Amazon.com and Amazon.co.uk)
    - Sorting functionality (price low to high, price high to low, rating, newest, popularity)
    - Dynamic model selection based on chosen make
    - Product display with simplified numeric ratings and clean "Visit Website" hyperlinks

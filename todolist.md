@@ -24,8 +24,14 @@
 - [x] Implement distinctive typeface with Poppins for headings and Inter for body text
 - [x] Create clearer typographic hierarchy with consistent font weights and sizes
 - [x] Simplify the footer with a more minimal approach
+- [x] Add data source selection (Amazon.com or Amazon.co.uk) in the filter section
+- [x] Remove options for amazon.de, amazon.es, and amazon.fr
 
 ## Future Tasks
+- [x] Remove condition and material filter boxes from site
+- [x] Move the data source box to the right side of the screen
+- [x] Implement two-column layout with device box and data source box opposite each other
+- [x] Centre align data in screen protector box and make columns for quantity and rating narrower
 - [ ] Implement real filtering functionality
 - [ ] Add price history charts with a charting library
 - [ ] Implement product comparison feature
