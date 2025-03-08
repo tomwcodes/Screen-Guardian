@@ -1,49 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://screenguardian.com/</loc>
+    <loc>https://dashcamprice.com/</loc>
     <lastmod>2025-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://screenguardian.com/?make=apple</loc>
+    <loc>https://dashcamprice.com/?make=nextbase</loc>
     <lastmod>2025-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://screenguardian.com/?make=samsung</loc>
+    <loc>https://dashcamprice.com/?make=garmin</loc>
     <lastmod>2025-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://screenguardian.com/?make=google</loc>
+    <loc>https://dashcamprice.com/?make=thinkware</loc>
     <lastmod>2025-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://screenguardian.com/?make=apple&amp;model=iphone-15-pro</loc>
+    <loc>https://dashcamprice.com/?make=blackvue</loc>
+    <lastmod>2025-03-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dashcamprice.com/?make=viofo</loc>
+    <lastmod>2025-03-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dashcamprice.com/?make=nextbase&amp;model=nextbase-622gw</loc>
     <lastmod>2025-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://screenguardian.com/?make=apple&amp;model=iphone-15</loc>
+    <loc>https://dashcamprice.com/?make=garmin&amp;model=garmin-dash-cam-67w</loc>
     <lastmod>2025-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://screenguardian.com/?make=samsung&amp;model=galaxy-s24</loc>
+    <loc>https://dashcamprice.com/?make=thinkware&amp;model=thinkware-u1000</loc>
     <lastmod>2025-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://screenguardian.com/?make=google&amp;model=pixel-8-pro</loc>
+    <loc>https://dashcamprice.com/?make=blackvue&amp;model=blackvue-dr900x-plus</loc>
+    <lastmod>2025-03-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dashcamprice.com/?make=viofo&amp;model=viofo-a129-pro-duo</loc>
     <lastmod>2025-03-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

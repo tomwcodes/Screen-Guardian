@@ -1,4 +1,4 @@
-// Main JavaScript file for ScreenGuardian - Screen Protector Price Comparison
+// Main JavaScript file for DashCamPrice - Dash Cam Price Comparison
 
 // Add meta description dynamically based on selected filters
 function updateMetaDescription(make, model) {
@@ -8,12 +8,12 @@ function updateMetaDescription(make, model) {
     if (make !== 'all' && model !== 'all') {
         const makeText = document.querySelector(`#make option[value="${make}"]`).textContent;
         const modelText = document.querySelector(`#model option[value="${model}"]`).textContent;
-        metaDescription.content = `Compare ${makeText} ${modelText} screen protector prices. Find the best deals on tempered glass, privacy glass, and TPU film screen protectors.`;
+        metaDescription.content = `Compare ${makeText} ${modelText} dash cam prices. Find the best deals on dash cams with features like night vision, parking mode, and 4K resolution.`;
     } else if (make !== 'all') {
         const makeText = document.querySelector(`#make option[value="${make}"]`).textContent;
-        metaDescription.content = `Compare ${makeText} screen protector prices for all models. Find the best deals on tempered glass, privacy glass, and TPU film screen protectors.`;
+        metaDescription.content = `Compare ${makeText} dash cam prices for all models. Find the best deals on dash cams with features like night vision, parking mode, and 4K resolution.`;
     } else {
-        metaDescription.content = "Compare screen protector prices for iPhone, Samsung, Google Pixel and more. Find the best deals on tempered glass, privacy glass, and TPU film screen protectors.";
+        metaDescription.content = "Compare dash cam prices for various brands and models. Find the best deals on front-facing, dual-channel, and 4K dash cams with night vision and parking mode.";
     }
 }
 
@@ -22,114 +22,128 @@ function updatePageTitle(make, model) {
     if (make !== 'all' && model !== 'all') {
         const makeText = document.querySelector(`#make option[value="${make}"]`).textContent;
         const modelText = document.querySelector(`#model option[value="${model}"]`).textContent;
-        document.title = `${makeText} ${modelText} Screen Protectors | ScreenGuardian`;
+        document.title = `${makeText} ${modelText} Dash Cams | DashCamPrice`;
     } else if (make !== 'all') {
         const makeText = document.querySelector(`#make option[value="${make}"]`).textContent;
-        document.title = `${makeText} Screen Protectors | ScreenGuardian`;
+        document.title = `${makeText} Dash Cams | DashCamPrice`;
     } else {
-        document.title = "ScreenGuardian - Compare Screen Protector Prices | Find the Best Deals";
+        document.title = "DashCamPrice - Compare Dash Cam Prices | Find the Best Deals";
     }
 }
 
-// Dummy data for iPhone 15 Pro screen protectors
-const screenProtectorData = [
+// Dummy data for dash cams
+const dashCamData = [
     {
         id: 1,
-        brand: "UltraGuard",
-        device: "iPhone 15 Pro",
-        deviceValue: "iphone-15-pro",
-        make: "apple",
-        price: 29.99,
-        quantity: 2,
-        material: "Tempered Glass",
+        brand: "Nextbase",
+        model: "622GW",
+        deviceValue: "nextbase-622gw",
+        make: "nextbase",
+        price: 329.99,
+        resolution: "4K",
+        features: "Night Vision, GPS, WiFi, Parking Mode",
         rating: 4.8,
         inStock: true,
-        link: "https://example.com/ultraguard-pro-max",
+        link: "https://example.com/nextbase-622gw",
         dateAdded: new Date(2025, 1, 15)
     },
     {
         id: 2,
-        brand: "CrystalClear",
-        device: "iPhone 15 Pro",
-        deviceValue: "iphone-15-pro",
-        make: "apple",
-        price: 24.95,
-        quantity: 1,
-        material: "Tempered Glass",
+        brand: "Nextbase",
+        model: "522GW",
+        deviceValue: "nextbase-522gw",
+        make: "nextbase",
+        price: 229.99,
+        resolution: "1440p",
+        features: "Alexa Built-in, GPS, WiFi",
         rating: 4.6,
         inStock: true,
-        link: "https://example.com/crystalclear-shield",
+        link: "https://example.com/nextbase-522gw",
         dateAdded: new Date(2025, 2, 1)
     },
     {
         id: 3,
-        brand: "PrivacyGuard",
-        device: "iPhone 15 Pro",
-        deviceValue: "iphone-15-pro",
-        make: "apple",
-        price: 34.99,
-        quantity: 3,
-        material: "Privacy Glass",
+        brand: "Nextbase",
+        model: "322GW",
+        deviceValue: "nextbase-322gw",
+        make: "nextbase",
+        price: 149.99,
+        resolution: "1080p",
+        features: "WiFi, GPS, Emergency SOS",
         rating: 4.5,
         inStock: true,
-        link: "https://example.com/privacyguard-elite",
+        link: "https://example.com/nextbase-322gw",
         dateAdded: new Date(2025, 0, 20)
     },
     {
         id: 4,
-        brand: "NanoShield",
-        device: "iPhone 15 Pro",
-        deviceValue: "iphone-15-pro",
-        make: "apple",
-        price: 19.99,
-        quantity: 1,
-        material: "TPU Film",
-        rating: 4.2,
+        brand: "Garmin",
+        model: "Dash Cam 67W",
+        deviceValue: "garmin-dash-cam-67w",
+        make: "garmin",
+        price: 259.99,
+        resolution: "1440p",
+        features: "180° Field of View, Voice Control, GPS",
+        rating: 4.7,
         inStock: true,
-        link: "https://example.com/nanoshield-flex",
+        link: "https://example.com/garmin-dash-cam-67w",
         dateAdded: new Date(2025, 1, 10)
     },
     {
         id: 5,
-        brand: "DiamondDefend",
-        device: "iPhone 15 Pro",
-        deviceValue: "iphone-15-pro",
-        make: "apple",
-        price: 39.99,
-        quantity: 2,
-        material: "Sapphire Glass",
-        rating: 4.9,
-        inStock: false,
-        link: "https://example.com/diamonddefend-pro",
+        brand: "Garmin",
+        model: "Dash Cam 57",
+        deviceValue: "garmin-dash-cam-57",
+        make: "garmin",
+        price: 229.99,
+        resolution: "1440p",
+        features: "140° Field of View, Voice Control, GPS",
+        rating: 4.6,
+        inStock: true,
+        link: "https://example.com/garmin-dash-cam-57",
         dateAdded: new Date(2025, 2, 5)
     },
     {
         id: 6,
-        brand: "MatteFlex",
-        device: "iPhone 15 Pro",
-        deviceValue: "iphone-15-pro",
-        make: "apple",
-        price: 22.95,
-        quantity: 1,
-        material: "Matte Glass",
-        rating: 4.3,
-        inStock: true,
-        link: "https://example.com/matteflex-antiglare",
+        brand: "Thinkware",
+        model: "U1000",
+        deviceValue: "thinkware-u1000",
+        make: "thinkware",
+        price: 399.99,
+        resolution: "4K",
+        features: "Dual Channel, Super Night Vision, Parking Mode",
+        rating: 4.9,
+        inStock: false,
+        link: "https://example.com/thinkware-u1000",
         dateAdded: new Date(2025, 1, 25)
     },
     {
         id: 7,
-        brand: "EdgeGuard",
-        device: "iPhone 15 Pro",
-        deviceValue: "iphone-15-pro",
-        make: "apple",
-        price: 32.99,
-        quantity: 2,
-        material: "Tempered Glass",
-        rating: 4.7,
+        brand: "BlackVue",
+        model: "DR900X Plus",
+        deviceValue: "blackvue-dr900x-plus",
+        make: "blackvue",
+        price: 449.99,
+        resolution: "4K",
+        features: "Cloud Connectivity, Dual Channel, Parking Mode",
+        rating: 4.8,
         inStock: true,
-        link: "https://example.com/edgeguard-360",
+        link: "https://example.com/blackvue-dr900x-plus",
         dateAdded: new Date(2025, 0, 5)
+    },
+    {
+        id: 8,
+        brand: "VIOFO",
+        model: "A129 Pro Duo",
+        deviceValue: "viofo-a129-pro-duo",
+        make: "viofo",
+        price: 249.99,
+        resolution: "4K Front / 1080p Rear",
+        features: "Dual Channel, WiFi, GPS, Parking Mode",
+        rating: 4.5,
+        inStock: true,
+        link: "https://example.com/viofo-a129-pro-duo",
+        dateAdded: new Date(2025, 2, 10)
     }
 ];
 
@@ -138,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeFilters();
     
     // Display all products initially
-    displayProducts(screenProtectorData);
+    displayProducts(dashCamData);
     
     // Add event listeners for smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -165,14 +179,14 @@ function generateProductSchema() {
         "itemListElement": []
     };
     
-    screenProtectorData.forEach((product, index) => {
+    dashCamData.forEach((product, index) => {
         schema.itemListElement.push({
             "@type": "ListItem",
             "position": index + 1,
             "item": {
                 "@type": "Product",
-                "name": `${product.brand} Screen Protector for ${product.device}`,
-                "description": `${product.material} screen protector for ${product.device}`,
+                "name": `${product.brand} ${product.model} Dash Cam`,
+                "description": `${product.resolution} dash cam with ${product.features}`,
                 "brand": {
                     "@type": "Brand",
                     "name": product.brand
@@ -249,37 +263,27 @@ function updateModelOptions() {
     // Add appropriate models based on selected make
     if (selectedMake === 'all') {
         // Add all models
-        addModelOption(modelFilter, 'iphone-15-pro', 'iPhone 15 Pro');
-        addModelOption(modelFilter, 'iphone-15', 'iPhone 15');
-        addModelOption(modelFilter, 'iphone-14-pro', 'iPhone 14 Pro');
-        addModelOption(modelFilter, 'iphone-14', 'iPhone 14');
-        addModelOption(modelFilter, 'iphone-13', 'iPhone 13');
-        addModelOption(modelFilter, 'galaxy-s24', 'Galaxy S24');
-        addModelOption(modelFilter, 'galaxy-s23', 'Galaxy S23');
-        addModelOption(modelFilter, 'galaxy-s22', 'Galaxy S22');
-        addModelOption(modelFilter, 'pixel-8-pro', 'Pixel 8 Pro');
-        addModelOption(modelFilter, 'pixel-8', 'Pixel 8');
-        addModelOption(modelFilter, 'pixel-7', 'Pixel 7');
-    } else if (selectedMake === 'apple') {
-        addModelOption(modelFilter, 'iphone-15-pro', 'iPhone 15 Pro');
-        addModelOption(modelFilter, 'iphone-15', 'iPhone 15');
-        addModelOption(modelFilter, 'iphone-14-pro', 'iPhone 14 Pro');
-        addModelOption(modelFilter, 'iphone-14', 'iPhone 14');
-        addModelOption(modelFilter, 'iphone-13', 'iPhone 13');
-    } else if (selectedMake === 'samsung') {
-        addModelOption(modelFilter, 'galaxy-s24', 'Galaxy S24');
-        addModelOption(modelFilter, 'galaxy-s23', 'Galaxy S23');
-        addModelOption(modelFilter, 'galaxy-s22', 'Galaxy S22');
-    } else if (selectedMake === 'google') {
-        addModelOption(modelFilter, 'pixel-8-pro', 'Pixel 8 Pro');
-        addModelOption(modelFilter, 'pixel-8', 'Pixel 8');
-        addModelOption(modelFilter, 'pixel-7', 'Pixel 7');
-    } else if (selectedMake === 'oneplus') {
-        addModelOption(modelFilter, 'oneplus-12', 'OnePlus 12');
-        addModelOption(modelFilter, 'oneplus-11', 'OnePlus 11');
-    } else if (selectedMake === 'xiaomi') {
-        addModelOption(modelFilter, 'xiaomi-14', 'Xiaomi 14');
-        addModelOption(modelFilter, 'xiaomi-13', 'Xiaomi 13');
+        addModelOption(modelFilter, 'nextbase-622gw', 'Nextbase 622GW');
+        addModelOption(modelFilter, 'nextbase-522gw', 'Nextbase 522GW');
+        addModelOption(modelFilter, 'nextbase-322gw', 'Nextbase 322GW');
+        addModelOption(modelFilter, 'garmin-dash-cam-67w', 'Garmin Dash Cam 67W');
+        addModelOption(modelFilter, 'garmin-dash-cam-57', 'Garmin Dash Cam 57');
+        addModelOption(modelFilter, 'thinkware-u1000', 'Thinkware U1000');
+        addModelOption(modelFilter, 'blackvue-dr900x-plus', 'BlackVue DR900X Plus');
+        addModelOption(modelFilter, 'viofo-a129-pro-duo', 'VIOFO A129 Pro Duo');
+    } else if (selectedMake === 'nextbase') {
+        addModelOption(modelFilter, 'nextbase-622gw', 'Nextbase 622GW');
+        addModelOption(modelFilter, 'nextbase-522gw', 'Nextbase 522GW');
+        addModelOption(modelFilter, 'nextbase-322gw', 'Nextbase 322GW');
+    } else if (selectedMake === 'garmin') {
+        addModelOption(modelFilter, 'garmin-dash-cam-67w', 'Garmin Dash Cam 67W');
+        addModelOption(modelFilter, 'garmin-dash-cam-57', 'Garmin Dash Cam 57');
+    } else if (selectedMake === 'thinkware') {
+        addModelOption(modelFilter, 'thinkware-u1000', 'Thinkware U1000');
+    } else if (selectedMake === 'blackvue') {
+        addModelOption(modelFilter, 'blackvue-dr900x-plus', 'BlackVue DR900X Plus');
+    } else if (selectedMake === 'viofo') {
+        addModelOption(modelFilter, 'viofo-a129-pro-duo', 'VIOFO A129 Pro Duo');
     }
 }
 
@@ -321,7 +325,7 @@ function applyFilters() {
     window.history.replaceState({}, '', url);
     
     // Filter products
-    let filteredProducts = screenProtectorData.filter(product => {
+    let filteredProducts = dashCamData.filter(product => {
         // Filter by make
         if (selectedMake !== 'all' && product.make !== selectedMake) return false;
         
@@ -377,7 +381,7 @@ function displayProducts(products) {
         const placeholderRow = document.createElement('tr');
         placeholderRow.className = 'placeholder-row';
         placeholderRow.innerHTML = `
-            <td colspan="8" class="placeholder-message">
+            <td colspan="6" class="placeholder-message">
                 No products found matching your filters
             </td>
         `;
@@ -400,7 +404,7 @@ function displayProducts(products) {
                 <td class="col-brand">
                     <span itemprop="brand" itemscope itemtype="https://schema.org/Brand">
                         <meta itemprop="name" content="${product.brand}">
-                        ${product.brand}
+                        ${product.brand} ${product.model}
                     </span>
                 </td>
                 <td class="col-price">
@@ -411,8 +415,8 @@ function displayProducts(products) {
                         $${product.price.toFixed(2)}
                     </span>
                 </td>
-                <td class="col-quantity">${product.quantity}</td>
-                <td class="col-material">${product.material}</td>
+                <td class="col-resolution">${product.resolution}</td>
+                <td class="col-features">${product.features}</td>
                 <td class="col-rating">
                     <span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
                         <meta itemprop="ratingValue" content="${product.rating}">
@@ -432,38 +436,6 @@ function displayProducts(products) {
             tableBody.appendChild(row);
         });
     }
-}
-
-// Helper function to generate star rating HTML
-function generateStarRating(rating) {
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-    
-    let starsHTML = '';
-    
-    // Add full stars
-    for (let i = 0; i < fullStars; i++) {
-        starsHTML += '<i class="fas fa-star"></i>';
-    }
-    
-    // Add half star if needed
-    if (halfStar) {
-        starsHTML += '<i class="fas fa-star-half-alt"></i>';
-    }
-    
-    // Add empty stars
-    for (let i = 0; i < emptyStars; i++) {
-        starsHTML += '<i class="far fa-star"></i>';
-    }
-    
-    return starsHTML;
-}
-
-// This function would be used to fetch price history data and render a chart
-function loadPriceHistory(productId) {
-    // In a real implementation, this would fetch price history data and render a chart
-    console.log('Loading price history for product:', productId);
 }
 
 // Update the data source text in the footer

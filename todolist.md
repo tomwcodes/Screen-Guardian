@@ -1,4 +1,4 @@
-# ScreenGuardian Project - Todo List
+# DashCamPrice Project - Todo List
 
 ## Completed Tasks
 - [x] Create HTML structure for diskprices.com clone
@@ -26,20 +26,24 @@
 - [x] Simplify the footer with a more minimal approach
 - [x] Add data source selection (Amazon.com or Amazon.co.uk) in the filter section
 - [x] Remove options for amazon.de, amazon.es, and amazon.fr
-
-## Future Tasks
 - [x] Remove condition and material filter boxes from site
 - [x] Move the data source box to the right side of the screen
 - [x] Implement two-column layout with device box and data source box opposite each other
 - [x] Centre align data in screen protector box and make columns for quantity and rating narrower
+- [x] Repurpose website as a dash cam comparison site
+
+## Future Tasks
 - [ ] Implement real filtering functionality
-- [ ] Add price history charts with a charting library
 - [ ] Implement product comparison feature
 - [ ] Add search functionality
-- [ ] Add user accounts and saved searches
 - [ ] Implement dark mode
-- [ ] Add device model selector for precise compatibility
+- [ ] Add more detailed feature filters (night vision, parking mode, etc.)
 - [ ] Add user reviews section
 - [ ] Implement lazy loading for images
 - [ ] Add a content delivery network (CDN) for faster loading
 - [ ] Implement server-side rendering for better SEO
+- [ ] Add price history charts
+- [ ] Add more dash cam brands and models
+- [ ] Add image thumbnails for each dash cam model
+- [ ] Implement user accounts for saving favorite dash cams
+- [ ] Add detailed dash cam specifications page
