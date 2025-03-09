@@ -31,6 +31,10 @@
 - [x] Implement two-column layout with device box and data source box opposite each other
 - [x] Centre align data in screen protector box and make columns for quantity and rating narrower
 - [x] Repurpose website as a dash cam comparison site
+- [x] Implement modern color palette with primary blue and secondary orange
+- [x] Create consistent visual language with rounded corners and subtle shadows
+- [x] Update typography with Google Fonts (Inter and Montserrat)
+- [x] Add subtle animations and transitions throughout the interface
 
 ## Future Tasks
 - [ ] Implement real filtering functionality

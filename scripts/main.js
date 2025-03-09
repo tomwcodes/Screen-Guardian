@@ -1,4 +1,5 @@
 // Main JavaScript file for DashCamPrice - Dash Cam Price Comparison
+// Enhanced with animations and transitions
 
 // Add meta description dynamically based on selected filters
 function updateMetaDescription(make, model) {
@@ -148,10 +149,13 @@ const dashCamData = [
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Add initial loading animation to the page
+    document.body.classList.add('loaded');
+    
     // Initialize filter functionality
     initializeFilters();
     
-    // Display all products initially
+    // Display all products initially with animation
     displayProducts(dashCamData);
     
     // Add event listeners for smooth scrolling
@@ -167,8 +171,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Add hover animations to filter boxes
+    document.querySelectorAll('.filter-box').forEach(box => {
+        box.addEventListener('mouseenter', function() {
+            this.classList.add('filter-hover');
+        });
+        
+        box.addEventListener('mouseleave', function() {
+            this.classList.remove('filter-hover');
+        });
+    });
+    
     // Generate product schema for SEO
     generateProductSchema();
+    
+    // Add animation to the results container
+    const resultsContainer = document.querySelector('.results-container');
+    if (resultsContainer) {
+        resultsContainer.classList.add('animate-in');
+    }
+});
+
+// Add CSS class for page loading animation
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        document.body.classList.add('content-visible');
+    }, 100);
 });
 
 // Generate JSON-LD schema for products
@@ -245,6 +273,18 @@ function initializeFilters() {
         updateMetaDescription(makeFilter.value, modelFilter.value);
         updatePageTitle(makeFilter.value, modelFilter.value);
     });
+    
+    // Add animation to select elements on focus
+    const selectElements = document.querySelectorAll('select');
+    selectElements.forEach(select => {
+        select.addEventListener('focus', function() {
+            this.classList.add('select-focus');
+        });
+        
+        select.addEventListener('blur', function() {
+            this.classList.remove('select-focus');
+        });
+    });
 }
 
 function updateModelOptions() {
@@ -254,6 +294,9 @@ function updateModelOptions() {
     if (!makeFilter || !modelFilter) return;
     
     const selectedMake = makeFilter.value;
+    
+    // Add animation class before changing options
+    modelFilter.classList.add('options-changing');
     
     // Clear current options except the first one (All Models)
     while (modelFilter.options.length > 1) {
@@ -285,6 +328,11 @@ function updateModelOptions() {
     } else if (selectedMake === 'viofo') {
         addModelOption(modelFilter, 'viofo-a129-pro-duo', 'VIOFO A129 Pro Duo');
     }
+    
+    // Remove animation class after a short delay
+    setTimeout(() => {
+        modelFilter.classList.remove('options-changing');
+    }, 300);
 }
 
 // Helper function to add model options
@@ -296,6 +344,12 @@ function addModelOption(selectElement, value, text) {
 }
 
 function applyFilters() {
+    // Add loading state to results container
+    const resultsContainer = document.querySelector('.results-container');
+    if (resultsContainer) {
+        resultsContainer.classList.add('loading');
+    }
+    
     const makeFilter = document.getElementById('make');
     const modelFilter = document.getElementById('model');
     const sortBySelect = document.getElementById('sort-by');
@@ -335,46 +389,80 @@ function applyFilters() {
         return true;
     });
     
-    // Sort products
-    filteredProducts.sort((a, b) => {
-        switch (sortBy) {
-            case 'price-asc':
-                return a.price - b.price;
-            case 'price-desc':
-                return b.price - a.price;
-            case 'rating-desc':
-                return b.rating - a.rating;
-            case 'date-desc':
-                return b.dateAdded - a.dateAdded;
-            case 'popularity':
-                // For demo purposes, we'll use rating as a proxy for popularity
-                return b.rating - a.rating;
-            default:
-                return 0;
+    // Sort products with animation delay to show the sorting effect
+    setTimeout(() => {
+        filteredProducts.sort((a, b) => {
+            switch (sortBy) {
+                case 'price-asc':
+                    return a.price - b.price;
+                case 'price-desc':
+                    return b.price - a.price;
+                case 'rating-desc':
+                    return b.rating - a.rating;
+                case 'date-desc':
+                    return b.dateAdded - a.dateAdded;
+                case 'popularity':
+                    // For demo purposes, we'll use rating as a proxy for popularity
+                    return b.rating - a.rating;
+                default:
+                    return 0;
+            }
+        });
+        
+        // Display filtered products
+        displayProducts(filteredProducts);
+        
+        // Update page title and meta description based on filters
+        updateMetaDescription(selectedMake, selectedModel);
+        updatePageTitle(selectedMake, selectedModel);
+        
+        // Remove loading state
+        if (resultsContainer) {
+            resultsContainer.classList.remove('loading');
         }
-    });
-    
-    // Display filtered products
-    displayProducts(filteredProducts);
-    
-    // Update the results count
-    const countElement = document.querySelector('.results-count .count');
-    if (countElement) {
-        countElement.textContent = filteredProducts.length;
-    }
-    
-    // Update page title and meta description based on filters
-    updateMetaDescription(selectedMake, selectedModel);
-    updatePageTitle(selectedMake, selectedModel);
+    }, 300); // Short delay for visual effect
 }
 
-// This function displays product data in the table
+// Animate count change
+function animateCountChange(element, startValue, endValue) {
+    const duration = 1000; // Animation duration in milliseconds
+    const frameDuration = 1000 / 60; // 60fps
+    const totalFrames = Math.round(duration / frameDuration);
+    const valueIncrement = (endValue - startValue) / totalFrames;
+    
+    let currentFrame = 0;
+    let currentValue = startValue;
+    
+    const animate = () => {
+        currentFrame++;
+        currentValue += valueIncrement;
+        
+        element.textContent = Math.round(currentValue);
+        
+        if (currentFrame < totalFrames) {
+            requestAnimationFrame(animate);
+        } else {
+            element.textContent = endValue;
+        }
+    };
+    
+    animate();
+}
+
+// This function displays product data in the table with animations
 function displayProducts(products) {
     const tableBody = document.querySelector('.results-table tbody');
     if (!tableBody) return;
     
     // Clear existing rows
     tableBody.innerHTML = '';
+    
+    // Update the results count with animation
+    const countElement = document.querySelector('.results-count .count');
+    if (countElement) {
+        // Animate count change
+        animateCountChange(countElement, parseInt(countElement.textContent) || 0, products.length);
+    }
     
     if (products.length === 0) {
         // Show placeholder message if no products
@@ -387,14 +475,18 @@ function displayProducts(products) {
         `;
         tableBody.appendChild(placeholderRow);
     } else {
-        // Add product rows
-        products.forEach(product => {
+        // Add product rows with staggered animation
+        products.forEach((product, index) => {
             const row = document.createElement('tr');
             
             // Add stock status class
             if (!product.inStock) {
                 row.classList.add('out-of-stock');
             }
+            
+            // Add animation class
+            row.classList.add('product-row');
+            row.style.animationDelay = `${index * 0.05}s`;
             
             // Add structured data attributes for better SEO
             row.setAttribute('itemscope', '');
@@ -412,7 +504,7 @@ function displayProducts(products) {
                         <meta itemprop="priceCurrency" content="USD">
                         <meta itemprop="price" content="${product.price}">
                         <meta itemprop="availability" content="${product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'}">
-                        $${product.price.toFixed(2)}
+                        <span class="price-value">$${product.price.toFixed(2)}</span>
                     </span>
                 </td>
                 <td class="col-resolution">${product.resolution}</td>
@@ -423,11 +515,11 @@ function displayProducts(products) {
                         <meta itemprop="bestRating" content="5">
                         <meta itemprop="worstRating" content="1">
                         <meta itemprop="ratingCount" content="100">
-                        ${product.rating.toFixed(1)}
+                        <span class="rating-value">${product.rating.toFixed(1)}</span>
                     </span>
                 </td>
                 <td class="col-link">
-                    <a href="${product.link}" target="_blank" rel="noopener" itemprop="url">
+                    <a href="${product.link}" target="_blank" rel="noopener" itemprop="url" class="visit-link">
                         Visit Website
                     </a>
                 </td>
