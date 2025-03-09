@@ -36,6 +36,9 @@
 - [x] Update typography with Google Fonts (Inter and Montserrat)
 - [x] Add subtle animations and transitions throughout the interface
 
+## Completed Tasks (continued)
+- [x] Add buying guide page with comprehensive information about dash cams
+
 ## Future Tasks
 - [ ] Implement real filtering functionality
 - [ ] Implement product comparison feature

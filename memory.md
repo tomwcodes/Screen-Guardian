@@ -10,6 +10,7 @@ The project currently consists of:
    - SEO-optimized with proper meta tags, title, and description
    - Schema.org structured data for better search engine understanding
    - Header with site name and tagline
+   - Navigation menu with link to the buying guide
    - Filter section with dropdowns (Brand, Model) and data source selection
    - Data source selection box positioned opposite the device box in a two-column layout
    - Results table with columns for dash cam attributes (Brand, Price, Resolution, Features, Rating, Link)
@@ -52,9 +53,21 @@ The project currently consists of:
    - Hover effects for interactive elements
    - Page loading animations
 
-4. **SEO Enhancements**
+4. **Buying Guide (buying-guide.html)**
+   - Comprehensive guide on how to choose a dash cam
+   - Sections covering what dash cams are, types of dash cams, key features, installation tips, and FAQs
+   - Styled with the same design language as the main page
+   - Interactive table of contents with smooth scrolling
+   - Tip boxes and warning boxes for highlighting important information
+   - Feature cards for summarizing key points
+   - Back-to-top button for easy navigation
+   - Responsive design that works on all device sizes
+   - SEO-optimized with proper meta tags and structured data
+   - Linked from the main navigation menu
+
+5. **SEO Enhancements**
    - robots.txt file with sitemap reference
-   - sitemap.xml with prioritized URLs for dash cam brands and models
+   - sitemap.xml with prioritized URLs for dash cam brands, models, and buying guide
    - Canonical URL to prevent duplicate content
    - Structured data for products and organization
    - Semantic HTML structure
