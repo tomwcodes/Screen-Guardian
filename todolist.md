@@ -38,6 +38,7 @@
 
 ## Completed Tasks (continued)
 - [x] Add buying guide page with comprehensive information about dash cams
+- [x] Add affiliate disclosure page with disclaimer text
 
 ## Future Tasks
 - [ ] Implement real filtering functionality

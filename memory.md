@@ -65,6 +65,15 @@ The project currently consists of:
    - SEO-optimized with proper meta tags and structured data
    - Linked from the main navigation menu
 
+5. **Affiliate Disclosure (affiliate-disclosure.html)**
+   - Comprehensive disclaimer and affiliate disclosure page
+   - Includes website disclaimer, external links disclaimer, and affiliates disclaimer
+   - Clear sections with proper headings for easy readability
+   - Styled with the same design language as the main site
+   - SEO-optimized with proper meta tags
+   - Linked from the footer of all pages
+   - Last updated date included for transparency
+
 5. **SEO Enhancements**
    - robots.txt file with sitemap reference
    - sitemap.xml with prioritized URLs for dash cam brands, models, and buying guide
